@@ -24,37 +24,38 @@ if (isset($_POST['qnap_item']) && is_array($_POST['qnap_item'])) {
 
 $company_code = $_POST['company_code'];
 
-$query = "delete from user_setting where company_code = '".$company_code."'";
+$query = "delete from user_sent_setting where company_code = '".$company_code."'";
+$sql_query = mysqli_query($link,$query);
 
 if ($microsoft_item != ""){
     foreach($microsoft_item as $value){
-        $query = "INSERT INTO user_setting VALUES ('".$company_code."','','microsoft','".$value."')";
+        $query = "INSERT INTO user_sent_setting VALUES ('".$company_code."','microsoft','".$value."')";
         $microsoft_query = mysqli_query($link,$query);
     }
 }
 
 if ($cybozu_item != ""){
     foreach($cybozu_item as $value){
-        $query = "INSERT INTO user_setting VALUES ('".$company_code."','','cybozu','".$value."')";
+        $query = "INSERT INTO user_sent_setting VALUES ('".$company_code."','cybozu','".$value."')";
         $cybozu_query = mysqli_query($link,$query);
     }
 }
 
 if ($linux_item != ""){
     foreach($linux_item as $value){
-        $query = "INSERT INTO user_setting VALUES ('".$company_code."','','linux','".$value."')";
+        $query = "INSERT INTO user_sent_setting VALUES ('".$company_code."','linux','".$value."')";
         $linux_query = mysqli_query($link,$query);
     }
 }
 
 if ($qnap_item != ""){
     foreach($qnap_item as $value){
-        $query = "INSERT INTO user_setting VALUES ('".$company_code."','','qnap','".$value."')";
+        $query = "INSERT INTO user_sent_setting VALUES ('".$company_code."','qnap','".$value."')";
         $qnap_query = mysqli_query($link,$query);
     }
 }
 
-$url = './top.php';
+$url = './company_setting.php';
 header('Location: ' . $url, true , 301);
 
 ?>

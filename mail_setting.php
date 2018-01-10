@@ -22,7 +22,7 @@ while ($company_row = mysqli_fetch_row($company_query)) {
   echo "<tr>";
   echo "<td>".$company_name."</td>";
   echo "<td>";
-  $mail_query = mysqli_query($link,"select user_mail from user_setting where company_code = '{$company_code}' limit 1");
+  $mail_query = mysqli_query($link,"select user_mail from user_mail_setting where company_code = '{$company_code}'");
   while ($mail_row = mysqli_fetch_row($mail_query)) {
       echo $mail_row[0]."<br/>";
   }
@@ -32,7 +32,7 @@ while ($company_row = mysqli_fetch_row($company_query)) {
   echo "</td>";
   echo "<td>";
   $sent_vendor_before = "";
-  $sent_query = mysqli_query($link,"select sent_vendor,sent_product from user_setting where company_code = '{$company_code}' ORDER BY sent_vendor");
+  $sent_query = mysqli_query($link,"select sent_vendor,sent_product from user_sent_setting where company_code = '{$company_code}' ORDER BY sent_vendor");
   while ($sent_row = mysqli_fetch_row($sent_query)) {
       if ($sent_vendor_before != $sent_row[0]){
         echo "<b>".$sent_row[0]."</b><br/>";
