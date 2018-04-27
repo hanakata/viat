@@ -22,19 +22,29 @@ while ($company_row = mysqli_fetch_row($company_query)) {
   echo "<tr>";
   echo "<td>".$company_name."</td>";
   echo "<td>";
-  $mail_query = mysqli_query($link,"select user_mail from user_mail_setting where company_code = '{$company_code}'");
+  $mail_query = mysqli_query($link,"select * from user_mail_setting where company_code = '{$company_code}'");
   if ($change_company_code === $company_code){
     $row = mysqli_num_rows($mail_query);
     if($row == 0){
       echo '<form action="./mail_address_regist.php" method="post">';
-      echo '<input type="text" name="mail_address" value="" class="form-control" autofocus>';
+      echo '<b>To:</b><br/>';
+      echo '<input type="text" name="mail_address_to" value="" class="form-control" autofocus>';
+      echo '<b>Cc:</b><br/>';
+      echo '<input type="text" name="mail_address_cc" value="" class="form-control">';
+      echo '<b>Bcc:</b><br/>';
+      echo '<input type="text" name="mail_address_bcc" value="" class="form-control">';
       echo '<input type="hidden" name="company_code" value="'.$company_code.'">';
       echo '<button class="btn btn-info" input type="text" type="submit">確定</button>';
       echo '</form>';      
     }else{
       while ($mail_row = mysqli_fetch_row($mail_query)) {
           echo '<form action="./mail_address_regist.php" method="post">';
-          echo '<input type="text" name="mail_address" value="'.$mail_row[0].'" class="form-control" autofocus>';
+          echo '<b>To:</b><br/>';
+          echo '<input type="text" name="mail_address_to" value="'.$mail_row[1].'" class="form-control" autofocus>';
+          echo '<b>Cc:</b><br/>';
+          echo '<input type="text" name="mail_address_cc" value="'.$mail_row[2].'" class="form-control">';
+          echo '<b>Bcc:</b><br/>';
+          echo '<input type="text" name="mail_address_bcc" value="'.$mail_row[3].'" class="form-control">';
           echo '<input type="hidden" name="company_code" value="'.$company_code.'">';
           echo '<button class="btn btn-info" input type="text" type="submit">確定</button>';
           echo '</form>';
@@ -42,7 +52,12 @@ while ($company_row = mysqli_fetch_row($company_query)) {
     }
   }else{
     while ($mail_row = mysqli_fetch_row($mail_query)) {
-        echo $mail_row[0]."<br/>";
+      echo "<b>To:</b><br/>";
+      echo $mail_row[1]."<br/>";
+      echo "<b>Cc:</b><br/>";
+      echo $mail_row[2]."<br/>";
+      echo "<b>Bcc:</b><br/>";
+      echo $mail_row[3]."<br/>";
     }
   }
 

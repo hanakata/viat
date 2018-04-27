@@ -22,10 +22,15 @@ while ($company_row = mysqli_fetch_row($company_query)) {
   echo "<tr>";
   echo "<td>".$company_name."</td>";
   echo "<td>";
-  $mail_query = mysqli_query($link,"select user_mail from user_mail_setting where company_code = '{$company_code}'");
+  $mail_query = mysqli_query($link,"select * from user_mail_setting where company_code = '{$company_code}'");
   while ($mail_row = mysqli_fetch_row($mail_query)) {
-      echo $mail_row[0]."<br/>";
-  }
+      echo "<b>To:</b><br/>";
+      echo $mail_row[1]."<br/>";
+      echo "<b>Cc:</b><br/>";
+      echo $mail_row[2]."<br/>";
+      echo "<b>Bcc:</b><br/>";
+      echo $mail_row[3]."<br/>";
+    }
   echo '<form action="./mail_address_setting.php" method="post">';
   echo '<button class="btn btn-info" input type="hidden" value="'.$company_code.'" name="company_code" type="submit">変更</button>';
   echo '</form>';
