@@ -1,0 +1,35 @@
+div#floating-menu {
+    position: absolute;
+    width: 250px;
+    top: 300px;
+    right: 3%;
+    border: 1px solid #D8D8D8;
+    border-radius: 5px; /* 角を丸める */
+    background: rgba(255, 255, 255, 0.5); /* 背景色を白に指定して不透明度を0.5に指定 */
+ 
+   /* 影を入れる。指定のピクセルは前から順に横方向のズレ、縦方向のズレ、ぼかし具合、 */
+    /* 影の色を指定している。 */
+/*    -moz-box-shadow: 0px 0px 4px #454545;  Firefox用 */
+/*    -webkit-box-shadow: 0px 0px 4px #454545;  Google ChromeやSafari用 */
+/*    box-shadow: 0px 0px 4px #454545;  CSS3対応ブラウザ用 */
+
+    z-index: 9999;
+}
+
+div#floating-index {
+    position: absolute;
+    width: 250px;
+    top: 300px;
+    left: 3%;
+    border: 1px solid #D8D8D8;
+    border-radius: 5px; /* 角を丸める */
+    background: rgba(255, 255, 255, 0.5); /* 背景色を白に指定して不透明度を0.5に指定 */
+ 
+   /* 影を入れる。指定のピクセルは前から順に横方向のズレ、縦方向のズレ、ぼかし具合、 */
+    /* 影の色を指定している。 */
+/*    -moz-box-shadow: 0px 0px 4px #454545;  Firefox用 */
+/*    -webkit-box-shadow: 0px 0px 4px #454545;  Google ChromeやSafari用 */
+/*    box-shadow: 0px 0px 4px #454545;  CSS3対応ブラウザ用 */
+
+    z-index: 9999;
+}
